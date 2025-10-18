@@ -89,11 +89,6 @@ box-shadow: rgb(0 0 0 / 0%) 1px 4px 7px, rgb(0 0 0 / 27%) 1px 3px 6px;
     animation: fadein ease 15s;
 }
 
-  #drag-container p > span {
-
-        /* display: block;
-    margin-top: 66px; */
-  }
 
   @keyframes fadein {
       from {
