@@ -65,10 +65,26 @@ if (autoRotate) {
 // add background music
 if (bgMusicURL) {
   document.getElementById('music-container').innerHTML += `
-<audio src="${bgMusicURL}" ${bgMusicControls? 'controls': ''} autoplay loop>    
+<audio id="bgMusic" src="${bgMusicURL}" ${bgMusicControls? 'controls': ''} loop>    
 <p>If you are reading this, it is because your browser does not support the audio element.</p>
 </audio>
 `;
+
+  // Try to play background music
+  setTimeout(function() {
+    var bgAudio = document.getElementById('bgMusic');
+    if (bgAudio) {
+      bgAudio.play().catch(function(e) {
+        console.log('Background music autoplay failed:', e);
+        // Add click listener to start music on user interaction
+        document.addEventListener('click', function() {
+          bgAudio.play().catch(function(err) {
+            console.log('Background music still failed:', err);
+          });
+        }, { once: true });
+      });
+    }
+  }, 1000);
 }
 
 // setup events

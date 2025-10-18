@@ -49,8 +49,16 @@
         window.onload = function () {
             var audio = document.getElementById("myAudio");
             audio.muted = false;
+            
+            // Try to play audio immediately
             audio.play().catch(function (e) {
                 console.log('Audio playback failed:', e);
+                // If autoplay fails, show a play button or try again on user interaction
+                document.body.addEventListener('click', function() {
+                    audio.play().catch(function(err) {
+                        console.log('Audio still failed:', err);
+                    });
+                }, { once: true });
             });
 
             // Hiệu ứng pháo hoa và trái tim
