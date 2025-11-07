@@ -1,6 +1,6 @@
-# 🎉 Happy Birthday Interactive Web Page
+# 🎉 Madylin's Birthday - Interactive 3D Celebration
 
-A beautiful, interactive 3D birthday celebration webpage with rotating photo carousel, confetti effects, and background music.
+A beautiful, interactive 3D birthday celebration webpage featuring a rotating photo carousel, animated confetti effects, fireworks, and background music. Optimized and cleaned up for better performance.
 
 ![Birthday Page](https://img.shields.io/badge/Birthday-Celebration-pink?style=for-the-badge&logo=party-popper)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -23,15 +23,17 @@ A beautiful, interactive 3D birthday celebration webpage with rotating photo car
 - **Smooth Animations**: CSS transitions and keyframe animations
 
 ### 🎵 Audio Experience
-- **Background Music**: Automatic background music playback
-- **SoundCloud Integration**: Uses SoundCloud API for music streaming
+- **Background Music**: Automatic background music playback (hidden controls)
+- **MP3/OGG Support**: Local audio files for reliable playback
 - **Loop Playback**: Continuous music loop for uninterrupted celebration
+- **Auto-play Fallback**: Click-to-play fallback for browsers that block autoplay
 
 ### 🎨 Customization
 - **Personalizable Text**: Easy to change birthday message and name
-- **Image Gallery**: Replace images in the `/images` folder
-- **Color Themes**: Customizable CSS variables for different color schemes
+- **Image Gallery**: Replace images in the `/images` folder with cache-busting support
+- **Responsive Design**: Optimized image sizes for desktop and mobile
 - **Music Selection**: Easy to change background music source
+- **Clean Codebase**: Optimized and cleaned up for better performance
 
 ## 🚀 Quick Start
 
@@ -44,7 +46,7 @@ A beautiful, interactive 3D birthday celebration webpage with rotating photo car
 
 1. **Clone or Download** the repository
    ```bash
-   git clone https://github.com/Aoudumber-Bade/Happy-Birthday-v5.1.git
+   git clone <your-repository-url>
    cd Happy-Birthday-v5.1
    ```
 
@@ -72,16 +74,17 @@ A beautiful, interactive 3D birthday celebration webpage with rotating photo car
 
 ```
 Happy-Birthday-v5.1/
-├── index.html          # Main HTML file
-├── main.css           # Styling and animations
-├── main.js            # Interactive functionality and 3D effects
-├── images/            # Photo gallery
-│   ├── r1.png - r10.png
-│   ├── GiftBox.png
-│   └── Message.png
+├── index.html          # Main HTML file with canvas animations
+├── main.css           # Optimized styling and animations
+├── main.js            # Interactive 3D carousel functionality
+├── images/            # Photo gallery (cache-busted)
+│   ├── r1.png - r10.png  # Carousel images
+│   ├── GiftBox.png       # Gift box graphic
+│   └── Message.png       # Message button background
 ├── music/             # Audio files
-│   └── setlove.mp3
-└── README.md          # This file
+│   ├── setlove.mp3       # Background music (MP3)
+│   └── setlove.ogg       # Background music (OGG fallback)
+└── README.md          # Project documentation
 ```
 
 ## 🎛️ Configuration
@@ -89,8 +92,9 @@ Happy-Birthday-v5.1/
 ### Customizing the Birthday Message
 Edit `index.html` line 29:
 ```html
-<p style="">Happy<span style=""> Birthday</span> YourName(YourMessage)</p>
+<p>Happy<span> Birthday</span> Madylin</p>
 ```
+Simply replace "Madylin" with the desired name.
 
 ### Changing Images
 1. Replace images in the `/images` folder
@@ -98,27 +102,49 @@ Edit `index.html` line 29:
 3. Maintain the same naming convention for easy replacement
 
 ### Modifying Music
-**Option 1: Use Local Music**
+**Change Background Music:**
 ```javascript
 // In main.js, change line 9:
-var bgMusicURL = 'music/setlove.mp3'; // or your music file
+var bgMusicURL = 'music/your-song.mp3'; // Replace with your music file
 ```
 
-**Option 2: Use Different SoundCloud Track**
+**Show/Hide Audio Controls:**
 ```javascript
-// In main.js, change line 9:
-var bgMusicURL = 'YOUR_SOUNDCLOUD_TRACK_URL';
+// In main.js, change line 10:
+var bgMusicControls = false; // true to show controls, false to hide
 ```
 
 ### Adjusting 3D Carousel Settings
 Edit variables in `main.js` (lines 2-6):
 ```javascript
-var radius = 240;           // Carousel size
+var radius = 240;           // Carousel size (distance from center)
 var autoRotate = true;      // Enable/disable auto-rotation
 var rotateSpeed = -60;      // Rotation speed (seconds per 360°)
-var imgWidth = 120;         // Image width in pixels
-var imgHeight = 170;        // Image height in pixels
+var imgWidth = 120;         // Image width in pixels (for JS sizing)
+var imgHeight = 170;        // Image height in pixels (for JS sizing)
 ```
+
+**Note:** Actual image display size is controlled by CSS (160px × 230px on desktop, 96px × 140px on mobile).
+
+## 🚀 Recent Optimizations (v5.1)
+
+### Performance Improvements
+- **Removed Redundant WebGL Code**: Eliminated ~300 lines of unused WebGL heart animation system
+- **Streamlined Font Loading**: Reduced from 10+ font families to just "Pacifico" (65% reduction)
+- **Cleaned CSS**: Removed commented-out styles and unused properties
+- **Fixed Audio Conflicts**: Prevented double audio playback with smart audio element reuse
+- **Cache Busting**: Added version parameters to prevent browser caching issues
+
+### File Size Reduction
+- **main.js**: Reduced from 458 to 158 lines (65% smaller)
+- **main.css**: Optimized font imports and removed dead code
+- **images/**: Removed duplicate and system files (.DS_Store, unused r10 file)
+
+### Enhanced Features
+- **Responsive Image Sizing**: CSS-controlled image dimensions with mobile optimization
+- **Hidden Audio Controls**: Clean interface with background music (no visible player)
+- **Better Browser Compatibility**: Improved autoplay fallback handling
+- **Faster Loading**: Optimized imports and reduced network requests
 
 ## 🎨 Styling Customization
 
@@ -144,11 +170,11 @@ Modify animation durations in `main.css`:
 ## 🛠️ Technical Details
 
 ### Technologies Used
-- **HTML5**: Semantic structure and audio elements
+- **HTML5**: Semantic structure and audio elements with canvas support
 - **CSS3**: 3D transforms, animations, and responsive design
-- **Vanilla JavaScript**: Interactive functionality and WebGL effects
-- **WebGL**: Advanced particle effects and animations
-- **Canvas API**: Confetti and particle animations
+- **Vanilla JavaScript**: Interactive 3D carousel functionality
+- **Canvas API**: Inline fireworks and heart particle animations
+- **Web Audio API**: Background music with autoplay fallback
 
 ### Browser Compatibility
 - ✅ Chrome 60+
@@ -205,10 +231,11 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-- **Original Creator**: [Aoudumber-Bade](https://github.com/Aoudumber-Bade)
-- **3D Carousel**: Custom implementation inspired by modern web design
+- **Original Concept**: Based on Happy Birthday carousel design
+- **3D Carousel**: Custom implementation with drag controls and auto-rotation
 - **Particle Effects**: Canvas-based confetti and heart animations
-- **Music**: SoundCloud integration for background music
+- **Optimization**: Code cleanup and performance improvements (v5.1)
+- **Font**: "Pacifico" from Google Fonts for elegant typography
 
 ## 📞 Support
 
